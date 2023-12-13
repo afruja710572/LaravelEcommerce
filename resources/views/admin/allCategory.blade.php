@@ -29,13 +29,13 @@ All Category - Single Ecom
               @foreach ($categories as $category)
         
               <tr>
-               <td>{{ $category->id}}</td>
+               <td>{{ $loop->index +1}}</td>
                <td>{{ $category->category_name}}</td>
-               <td>{{ $category->product_count}}</td>
+               <td>{{ $category->subcategory_count}}</td>
                <td>{{ $category->slug}}</td>
                <td>
-                <a href="" class="btn btn-sm btn-primary"> Edit</a>
-                <a href="" class="btn btn-sm btn-danger"> Delete</a>
+                <a href="{{route ('editcategory', $category->id)}}" class="btn btn-sm btn-primary"> Edit</a>
+                <a href="{{route ('deletecategory', $category->id)}}" class="btn btn-sm btn-danger"> Delete</a>
                </td>
               </tr>
 
