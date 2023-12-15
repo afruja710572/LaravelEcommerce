@@ -22,11 +22,11 @@ class SubCategoryController extends Controller
     public function StoreSubCategory(Request $request)
     {
         $request->validate([
-            'subcategory_name' => 'required|unique:sub_categories','category_id'=>'required'
+            'subcategory_name' => 'required|unique:sub_categories','category_id'=>'required',
         ]);
 
         $category_id = $request->category_id;
-
+        
         $category_name = category::where('id',$category_id)->value('category_name');
 
         Subcategory::insert([
