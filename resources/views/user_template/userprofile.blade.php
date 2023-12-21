@@ -1,5 +1,4 @@
-@extends('user_template.layouts.template')
-@section('main-content')
-<h2>User Profile Page</h2>
-
+@extends('user_template.layouts.user_profile_template')
+@section('profilecontent')
+Welcome {{Auth::user()->name}} 
 @endsection
