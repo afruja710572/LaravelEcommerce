@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -23,7 +25,9 @@ class ClientController extends Controller
     }
     public function AddToCart()
     {
-        return view('user_template.addtocart');
+        $userId = Auth::id();
+        $cart_items = Cart::where('user_id', $userId)->get();
+        return view('user_template.addtocart', compact('cart_items'));
     }
     public function Checkout()
     {
@@ -51,5 +55,26 @@ class ClientController extends Controller
     public function CustomerService()
     {
         return view('user_template.customerservice');
+    }
+    public function AddProductToCart(Request $request)
+    {
+        $product_price = $request->price;
+        $quantity = $request->quantity;
+        $final_price =  $product_price * $quantity;
+        Cart::insert([
+            'product_id' => $request->product_id,
+            'user_id' => Auth::id(),
+            'quantity' =>  $quantity,
+            'price' => $final_price,
+        ]);
+        return redirect()->route('addtocart')->with('message','Your Item added to cart successfully!');
+    }
+    public function RemoveCartItem($id){
+        Cart::findOrFail($id)->delete();
+        return redirect()->route('addtocart')->with('message', 'Your item removed from cart successfully!');
+    }
+    public function GetShippingAddress()
+    {
+        return view('user_template.shippingaddress');
     }
 }

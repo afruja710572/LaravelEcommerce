@@ -78,7 +78,7 @@ $categories = App\Models\Category::latest()->get();
                <div class="containt_main">
                   <div id="mySidenav" class="sidenav">
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <a href="index.html">Home</a>
+                     <a href="{{route('Home')}}">Home</a>
                      @foreach ($categories as $category)
                         <a href="{{route('category', [$category->id, $category->slug])}}">{{$category->category_name}}</a>
                      @endforeach
@@ -118,13 +118,13 @@ $categories = App\Models\Category::latest()->get();
                      </div>
                      <div class="login_menu">
                         <ul>
-                           <li><a href="#">
+                           <li><a href="{{route('addtocart')}}">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                               <span class="padding_10">Cart</span></a>
                            </li>
                            <li><a href="#">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
+                              <span class="padding_10">User</span></a>
                            </li>
                         </ul>
                      </div>

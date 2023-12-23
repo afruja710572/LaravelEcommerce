@@ -15,9 +15,11 @@
                             <p class="price_text">Price  <span style="color: #262626;">৳ {{ $product->price}}</span></p>
                             <div class="tshirt_img"><img src="{{ asset($product->product_img) }} "></div>
                             <div class="btn_main">
-                              <form action="{{route('addproducttocart', $product->id)}}" method="POST">
+                              <form action="{{route('addproducttocart')}}" method="POST">
                                   @csrf
                                   <input type="hidden" value="{{$product->id}}" name="product_id" />
+                                  <input type="hidden" value="{{$product->price}}" name="price" />
+                                  <input type="hidden" value="1" name="quantity" />
                                   <input class="btn btn-outline-warning" type="submit" value="Buy Now" />
                               </form>
                              <div class="seemore_bt"><a href="{{route('singleproduct',[$product->id, $product->slug])}}">See More</a></div>
