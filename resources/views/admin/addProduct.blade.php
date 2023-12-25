@@ -15,19 +15,28 @@ Add Product - Single Ecom
           </div>
 
           <div class="card-body">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <form action="{{route('storeProduct')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Collection" />
+                  <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Collection" value="{{ old('product_name') }}"/>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name"> Product Price </label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="price" name="price" placeholder="12" />
+                  <input type="text" class="form-control" id="price" name="price" placeholder="12" value="{{ old('price') }}"/>
                 </div>
               </div>
 
@@ -35,21 +44,21 @@ Add Product - Single Ecom
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Quantity</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1000" />
+                  <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1000" value="{{ old('quantity') }}"/>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Short Description</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" id="product_short_des" name="product_short_des" cols="30" rows="10"></textarea>
+                  <textarea class="form-control" id="product_short_des" name="product_short_des" cols="30" rows="10">{{ old('product_short_des') }}</textarea>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Long Description</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" id="product_long_des" name="product_long_des" cols="30" rows="10"></textarea>
+                  <textarea class="form-control" id="product_long_des" name="product_long_des" cols="30" rows="10">{{ old('product_long_des') }}</textarea>
                 </div>
               </div>
 

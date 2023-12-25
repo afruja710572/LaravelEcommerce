@@ -139,13 +139,13 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('pendingOrder')}}" class="menu-link">
+                  <a href="{{route('completedorder')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-table"></i>
                     <div data-i18n="Analytics">Completed Orders</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{route('pendingOrder')}}" class="menu-link">
+                    <a href="{{route('canceledorder')}}" class="menu-link">
                       <i class="menu-icon tf-icons bx bx-box"></i>
                       <div data-i18n="Analytics">Cancel Orders</div>
                     </a>

@@ -13,7 +13,7 @@ All Product - Single Ecom
       @endif
     <!-- Bootstrap Table with Header - Light -->
     <div class="card">
-        <h5 class="card-header">Available All Products Information</h5>
+        <h5 class="card-header">Available Products Information</h5>
         <div class="table-responsive text-nowrap">
           <table class="table">
             <thead class="table-light">

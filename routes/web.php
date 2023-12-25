@@ -36,6 +36,8 @@ Route::middleware(['auth', 'role:user'])->group(function(){
         Route::get('/add-to-cart', 'AddToCart')->name('addtocart');
         Route::post('/add-product-to-cart', 'AddProductToCart')->name('addproducttocart');
         Route::get('/shipping-address', 'GetShippingAddress')->name('shippingaddress');
+        Route::post('/add-shipping-address', 'AddShippingAddress')->name('addshippingaddress');
+        Route::post('/place-order', 'PlaceOrder')->name('placeorder');
         Route::get('/checkout', 'Checkout')->name('checkout');
         Route::get('/user-profile', 'UserProfile')->name('userprofile');
         Route::get('/user-profile/pending-orders','PendingOrders')->name('pendingorders');
@@ -80,6 +82,10 @@ Route::middleware('auth', 'role:admin')->group(function () {
     });
     Route::controller(OrderController::class)->group(function(){
         Route::get('/admin/pending-orders', 'Index')->name('pendingOrder');
+        Route::get('/admin/completed-orders', 'CompletedOrder')->name('completedorder');
+        Route::get('/admin/order-confirm/{id}', 'OrderConfirm')->name('orderconfirm');
+        Route::get('/admin/order-cancel/{id}', 'OrderCancel')->name('ordercancel');
+        Route::get('/admin/canceled-orders', 'CanceledOrder')->name('canceledorder');
     });
     //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

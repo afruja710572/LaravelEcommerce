@@ -21,7 +21,7 @@ Edit Product Image - Single Ecom
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Previous Image</label>
                 <div class="col-sm-10">
-                    <img src="{{asset($productinfo->product_img)}}" alt="">
+                    <img style="width: 90%; height: 90%;" src="{{asset($productinfo->product_img)}}" alt="">
                 </div>
               </div>
 

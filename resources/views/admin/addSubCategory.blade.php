@@ -20,7 +20,7 @@ Add Sub Category - Single Ecom
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Sub Category Name</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Women's collection" />
+                  <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Name of Subcategory" />
                 </div>
               </div>
 
