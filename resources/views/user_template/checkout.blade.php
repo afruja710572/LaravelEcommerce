@@ -8,6 +8,7 @@
             <p>City/Village- {{$shipping_address->city_name}}</p>
             <p>Postal Code- {{$shipping_address->postal_code}}</p>
             <p>Phone Number- {{$shipping_address->phone_number}}</p>
+            <p>Address- {{$shipping_address->address}}</p>
         </div>
     </div>
 

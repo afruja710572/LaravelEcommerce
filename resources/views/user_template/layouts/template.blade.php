@@ -118,14 +118,28 @@ $categories = App\Models\Category::latest()->get();
                      </div>
                      <div class="login_menu">
                         <ul>
+                           
+                           @if (auth()->check())
+                           <li><a href="{{route('userprofile')}}">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">User</span></a>
+                           </li>
                            <li><a href="{{route('addtocart')}}">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                               <span class="padding_10">Cart</span></a>
                            </li>
-                           <li><a href="#">
+                           @else
+                           <li><a href="{{route('login')}}">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">User</span></a>
+                              <span class="padding_10">Login</span></a>
                            </li>
+                           <li><a href="{{route('register')}}">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Register</span></a>
+                           </li>
+                           @endif
+                           
+                           
                         </ul>
                      </div>
                   </div>

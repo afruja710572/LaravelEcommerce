@@ -9,35 +9,48 @@ Pending Orders - Single Ecom
            <h2 class="text-center"> Pending Orders</h2>
         </div>
         <div class="card-body">
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{session()->get('message')}}
+            </div>
+          @endif
                 <table class="table">
                     <tr>
-                        <th>User Id</th>
+                        <th>Customer Name</th>
                         <th>Shipping Information</th>
-                        <th>Product Id</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Total Will Pay</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                     @foreach ($pending_orders as $order)
-                        <tr>
-                            <td>{{ $order->userid}}</td>
-                            <td>
-                                <ul>
-                                    <li>Phone Number - {{$order->shipping_phoneNumber}}</li>
-                                    <li>City - {{$order->shipping_city}}</li>
-                                    <li>Postal Code - {{$order->shipping_postalcode}}</li>
-                                </ul>
-                            </td>
-                            <td>{{ $order->product_id}}</td>
-                            <td>{{ $order->quantity}}</td>
-                            <td>{{ $order->total_price}}</td>
-                            <td style="color: red;font-weight:bold;">{{ $order->status}}</td>
-                            <td class="row">
-                               <a href="{{route('orderconfirm', $order->id)}}" class="btn btn-sm btn-success">Confirm</a>
-                               <a href="{{route('ordercancel', $order->id)}}" class="btn btn-sm  btn-warning  mt-2">Cancel</a>
-                            </td>
-                        </tr>
+                    @php
+                        $product_info = App\Models\Product::where('id', $order->product_id)->first();
+                        $user_info = App\Models\User::where('id', $order->userid)->first();
+                    @endphp
+                    @if ($product_info && $user_info)
+                    <tr>
+                        <td>{{ $user_info->name}}</td>
+                        <td>
+                            <ul>
+                                <li>Phone Number - {{$order->shipping_phoneNumber}}</li>
+                                <li>City - {{$order->shipping_city}}</li>
+                                <li>Postal Code - {{$order->shipping_postalcode}}</li>
+                                <li>Address - {{$order->shipping_address}}</li>
+                            </ul>
+                        </td>
+                        <td>{{ $product_info->product_name}}</td>
+                        <td>{{ $order->quantity}}</td>
+                        <td>{{ $order->total_price}}</td>
+                        <td style="color: red;font-weight:bold;">{{ $order->status}}</td>
+                        <td>
+                           <a href="{{route('orderconfirm', $order->id)}}" class="btn btn-sm btn-success">Confirm</a>
+                           <a href="{{route('ordercancel', $order->id)}}" class="btn btn-sm  btn-warning  mt-2">Cancel</a>
+                        </td>
+                    </tr>
+                    @endif
+                        
                     @endforeach
                 </table>
         </div>

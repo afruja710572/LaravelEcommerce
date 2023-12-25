@@ -18,7 +18,7 @@ All Product - Single Ecom
           <table class="table">
             <thead class="table-light">
               <tr>
-                <th>Id</th>
+                <th>SL No.</th>
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Price</th>
@@ -29,7 +29,7 @@ All Product - Single Ecom
               @foreach ($products as $product)
 
               <tr>
-               <td>{{$product->id}}</td>
+               <td>{{$loop->index+1}}</td>
                <td>{{$product->product_name}}</td>
                <td>
                   <img style="height:100px;" src="{{asset($product->product_img)}}" alt="" >

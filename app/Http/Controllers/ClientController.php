@@ -40,7 +40,8 @@ class ClientController extends Controller
     }
     public function UserProfile()
     {
-        return view('user_template.userprofile');
+        $completed_orders = Order::where('status','completed')->latest()->get();
+        return view('user_template.userprofile', compact('completed_orders'));
     }
     public function PendingOrders(){
         $pending_orders = Order::where('status','pending')->latest()->get();
@@ -90,6 +91,7 @@ class ClientController extends Controller
             'phone_number' => $request->phone_number,
             'city_name' => $request->city_name,
             'postal_code' => $request->postal_code,
+            'address' => $request->address
         ]);
         return redirect()->route('checkout');
 
@@ -105,6 +107,7 @@ class ClientController extends Controller
                 'shipping_phoneNumber' => $shipping_address->phone_number,
                 'shipping_city' => $shipping_address->city_name,
                 'shipping_postalcode' => $shipping_address->postal_code,
+                'shipping_address' => $shipping_address->address,
                 'product_id' => $item->product_id,
                 'quantity' => $item->quantity,
                 'total_price' => $item->price,
